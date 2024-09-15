@@ -17,25 +17,25 @@ def create_driver():
     driver.quit()
 
 
-@pytest.fixture
+@pytest.fixture(scope="function")
 def main_page(create_driver):
     create_driver.get(BASE_URL)
     return create_driver
 
 
-@pytest.fixture
+@pytest.fixture(scope="function")
 def order_page(create_driver):
     create_driver.get(ORDER_URL)
     return create_driver
 
 
-@pytest.fixture
+@pytest.fixture(scope="function")
 def order_status_page(create_driver):
     create_driver.get(ORDER_STATUS_URL)
     return create_driver
 
 
-@pytest.fixture
+@pytest.fixture(scope="function")
 def dzen_page(create_driver):
     create_driver.get(DZEN_URL)
     return create_driver

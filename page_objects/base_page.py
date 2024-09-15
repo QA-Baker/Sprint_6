@@ -9,20 +9,33 @@ class BasePage:
         self.driver = driver
         self.wait = WebDriverWait(driver, 3)
 
-    # Метод для поиска элемента
     def find_element(self, locator):
         return self.wait.until(ec.visibility_of_element_located(locator))
 
-    # Метод для клика по элементу
     def click_element(self, locator):
         element = self.wait.until(ec.element_to_be_clickable(locator))
         element.click()
 
-    # Метод для ввода текста
     def enter_text(self, locator, text: str):
         element = self.find_element(locator)
         element.clear()
         element.send_keys(text)
+
+    # Ожидание, пока элемент станет кликабельным
+    def wait_until_element_clickable(self, locator, timeout=3):
+        return WebDriverWait(self.driver, timeout).until(ec.element_to_be_clickable(locator))
+
+    # Ожидание, пока элемент станет видимым
+    def wait_until_element_visible(self, locator, timeout=3):
+        return WebDriverWait(self.driver, timeout).until(ec.visibility_of_element_located(locator))
+
+    # Выполнение JavaScript
+    def execute_script(self, script, *args):
+        return self.driver.execute_script(script, *args)
+
+    # Получение текущего URL
+    def get_current_url(self):
+        return self.driver.current_url
 
     # Клики по логотипам
     def click_yandex_logo(self):
