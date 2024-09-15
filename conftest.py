@@ -1,4 +1,5 @@
 import pytest
+import os
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.firefox.options import Options
@@ -7,8 +8,15 @@ from config import BASE_URL, ORDER_URL, ORDER_STATUS_URL, DZEN_URL
 
 @pytest.fixture(scope="function")
 def create_driver():
-    gecko_path = "D:/Программы/WebDriver/bin/geckodriver.exe"
-    firefox_binary_path = "C:/Program Files/Mozilla Firefox/firefox.exe"
+    gecko_path = os.environ.get("GECKODRIVER_PATH")
+    firefox_binary_path = os.environ.get("FIREFOX_BINARY_PATH")
+
+    if not gecko_path or not firefox_binary_path:
+        raise EnvironmentError(
+            "Переменные окружения GECKODRIVER_PATH или FIREFOX_BINARY_PATH не заданы. "
+            "Пожалуйста, задайте их в вашей системе или CI."
+        )
+
     firefox_options = Options()
     firefox_options.binary_location = firefox_binary_path
     driver = webdriver.Firefox(service=FirefoxService(executable_path=gecko_path), options=firefox_options)
