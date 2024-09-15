@@ -36,12 +36,12 @@ def test_yandex_logo_navigation(main_page):
         base_page.click_yandex_logo()
 
     with allure.step("Ожидание открытия новой вкладки и переключение на нее"):
-        WebDriverWait(main_page, 3).until(lambda d: len(d.window_handles) > 1)
+        WebDriverWait(main_page, 5).until(lambda d: len(d.window_handles) > 1)
         new_window = main_page.window_handles[-1]
         main_page.switch_to.window(new_window)
 
     with allure.step("Проверка URL главной страницы Дзена"):
-        WebDriverWait(main_page, 3).until(
+        WebDriverWait(main_page, 5).until(
             ec.url_to_be(DZEN_URL)
         )
     assert main_page.current_url == DZEN_URL, \

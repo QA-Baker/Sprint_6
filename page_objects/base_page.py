@@ -7,20 +7,33 @@ from locators.base_page_locators import BasePageLocators
 class BasePage:
     def __init__(self, driver: WebDriver):
         self.driver = driver
-        self.wait = WebDriverWait(driver, 10)
+        self.wait = WebDriverWait(driver, 3)
 
+    # Метод для поиска элемента
+    def find_element(self, locator):
+        return self.wait.until(ec.visibility_of_element_located(locator))
+
+    # Метод для клика по элементу
+    def click_element(self, locator):
+        element = self.wait.until(ec.element_to_be_clickable(locator))
+        element.click()
+
+    # Метод для ввода текста
+    def enter_text(self, locator, text: str):
+        element = self.find_element(locator)
+        element.clear()
+        element.send_keys(text)
+
+    # Клики по логотипам
     def click_yandex_logo(self):
-        yandex_logo = self.wait.until(ec.element_to_be_clickable(BasePageLocators.yandex_logo))
-        yandex_logo.click()
+        self.click_element(BasePageLocators.yandex_logo)
 
     def click_scooter_logo(self):
-        scooter_logo = self.wait.until(ec.element_to_be_clickable(BasePageLocators.scooter_logo))
-        scooter_logo.click()
+        self.click_element(BasePageLocators.scooter_logo)
 
+    # Клики по кнопкам "Заказать"
     def click_top_order_button(self):
-        top_order_button = self.wait.until(ec.element_to_be_clickable(BasePageLocators.top_order_button))
-        top_order_button.click()
+        self.click_element(BasePageLocators.top_order_button)
 
     def click_bottom_order_button(self):
-        bottom_order_button = self.wait.until(ec.element_to_be_clickable(BasePageLocators.bottom_order_button))
-        bottom_order_button.click()
+        self.click_element(BasePageLocators.bottom_order_button)
