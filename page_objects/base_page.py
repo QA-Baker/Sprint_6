@@ -9,13 +9,16 @@ class BasePage:
         self.driver = driver
         self.wait = WebDriverWait(driver, 3)
 
+    # Метод для поиска элемента
     def find_element(self, locator):
         return self.wait.until(ec.visibility_of_element_located(locator))
 
+    # Метод для клика по элементу
     def click_element(self, locator):
-        element = self.wait.until(ec.element_to_be_clickable(locator))
+        element = self.wait_until_element_clickable(locator)
         element.click()
 
+    # Метод для ввода текста
     def enter_text(self, locator, text: str):
         element = self.find_element(locator)
         element.clear()
