@@ -53,3 +53,16 @@ class BasePage:
 
     def click_bottom_order_button(self):
         self.click_element(BasePageLocators.bottom_order_button)
+
+    # Ожидание открытия новой вкладки
+    def wait_for_new_tab(self, timeout=5):
+        WebDriverWait(self.driver, timeout).until(lambda d: len(d.window_handles) > 1)
+
+    # Переключение на новую вкладку
+    def switch_to_new_tab(self):
+        new_window = self.driver.window_handles[-1]
+        self.driver.switch_to.window(new_window)
+
+    # Ожидание пока URL станет определённым
+    def wait_for_url_to_be(self, expected_url, timeout=5):
+        WebDriverWait(self.driver, timeout).until(ec.url_to_be(expected_url))
