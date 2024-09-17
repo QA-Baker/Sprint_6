@@ -66,3 +66,8 @@ class BasePage:
     # Ожидание пока URL станет определённым
     def wait_for_url_to_be(self, expected_url, timeout=5):
         WebDriverWait(self.driver, timeout).until(ec.url_to_be(expected_url))
+
+    # Метод для клика по элементу через JavaScript
+    def click_element_with_js(self, locator):
+        element = self.find_element(locator)
+        self.execute_script("arguments[0].click();", element)

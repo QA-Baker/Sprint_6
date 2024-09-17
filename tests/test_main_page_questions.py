@@ -14,8 +14,7 @@ class TestMainPageQuestions:
         main_page_methods = MainPageMethods(main_page)
 
         with allure.step(f"Клик по вопросу {question_locator}"):
-            question_element = main_page_methods.find_element(question_locator)
-            main_page_methods.execute_script("arguments[0].click();", question_element)
+            main_page_methods.click_element_with_js(question_locator)
 
         with allure.step(f"Ожидание отображения ответа на вопрос {question_locator}"):
             answer_element = main_page_methods.wait_until_element_visible(answer_locator)
