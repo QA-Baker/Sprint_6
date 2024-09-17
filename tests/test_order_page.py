@@ -1,6 +1,5 @@
 import pytest
 import allure
-from locators.order_page_locators import OrderPage
 from page_objects.order_page import OrderPageMethods
 from test_data import order_test_data
 
@@ -37,5 +36,5 @@ class TestOrderPage:
             order_page_methods.click_confirm_order_button()
 
         with allure.step("Проверка появления кнопки 'Посмотреть статус'"):
-            assert order_page_methods.wait_until_element_visible(OrderPage.view_status_button).is_displayed(), \
+            assert order_page_methods.is_view_status_button_visible(), \
                 "Кнопка 'Посмотреть статус' не отображается после оформления заказа."
