@@ -13,10 +13,8 @@ class TestMainPageQuestions:
     def test_faq_expand(self, main_page, question_locator, answer_locator):
         main_page_methods = MainPageMethods(main_page)
 
-        with allure.step(f"Ожидание кликабельности вопроса {question_locator}"):
-            question_element = main_page_methods.wait_until_element_clickable(question_locator)
-
-        with allure.step("Клик по вопросу"):
+        with allure.step(f"Клик по вопросу {question_locator}"):
+            question_element = main_page_methods.find_element(question_locator)
             main_page_methods.execute_script("arguments[0].click();", question_element)
 
         with allure.step(f"Ожидание отображения ответа на вопрос {question_locator}"):
