@@ -17,7 +17,8 @@ class TestMainPageQuestions:
             main_page_methods.click_element_with_js(question_locator)
 
         with allure.step(f"Ожидание отображения ответа на вопрос {question_locator}"):
-            answer_element = main_page_methods.wait_until_element_visible(answer_locator)
+            # Используем find_element для ожидания отображения ответа
+            answer_element = main_page_methods.find_element(answer_locator)
 
         with allure.step(f"Проверка, что ответ {answer_locator} отображается"):
             assert answer_element.is_displayed(), f"Ответ на вопрос {question_locator} не отображается."

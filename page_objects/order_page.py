@@ -64,4 +64,4 @@ class OrderPageMethods(BasePage):
         self.click_element(OrderPage.view_status_button)
 
     def is_view_status_button_visible(self):
-        return self.wait_until_element_visible(OrderPage.view_status_button).is_displayed()
+        return self.find_element(OrderPage.view_status_button).is_displayed()

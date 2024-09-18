@@ -15,8 +15,13 @@ class BasePage:
 
     # Метод для клика по элементу
     def click_element(self, locator):
-        element = self.wait_until_element_clickable(locator)
+        element = self.find_element(locator)
         element.click()
+
+    # Метод для клика по элементу через JavaScript
+    def click_element_with_js(self, locator):
+        element = self.find_element(locator)
+        self.execute_script("arguments[0].click();", element)
 
     # Метод для ввода текста
     def enter_text(self, locator, text: str):
@@ -27,10 +32,6 @@ class BasePage:
     # Ожидание, пока элемент станет кликабельным
     def wait_until_element_clickable(self, locator, timeout=3):
         return WebDriverWait(self.driver, timeout).until(ec.element_to_be_clickable(locator))
-
-    # Ожидание, пока элемент станет видимым
-    def wait_until_element_visible(self, locator, timeout=3):
-        return WebDriverWait(self.driver, timeout).until(ec.visibility_of_element_located(locator))
 
     # Выполнение JavaScript
     def execute_script(self, script, *args):
@@ -66,8 +67,3 @@ class BasePage:
     # Ожидание пока URL станет определённым
     def wait_for_url_to_be(self, expected_url, timeout=5):
         WebDriverWait(self.driver, timeout).until(ec.url_to_be(expected_url))
-
-    # Метод для клика по элементу через JavaScript
-    def click_element_with_js(self, locator):
-        element = self.find_element(locator)
-        self.execute_script("arguments[0].click();", element)
