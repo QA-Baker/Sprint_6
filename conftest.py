@@ -3,7 +3,8 @@ import os
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.firefox.options import Options
-from config import BASE_URL, ORDER_URL, ORDER_STATUS_URL, DZEN_URL
+from config import BASE_URL, ORDER_STATUS_URL, DZEN_URL
+from page_objects.order_page import OrderPageMethods
 
 
 @pytest.fixture(scope="function")
@@ -33,8 +34,8 @@ def main_page(create_driver):
 
 @pytest.fixture(scope="function")
 def order_page(create_driver):
-    create_driver.get(ORDER_URL)
-    return create_driver
+    create_driver.get(BASE_URL)
+    return OrderPageMethods(create_driver)
 
 
 @pytest.fixture(scope="function")

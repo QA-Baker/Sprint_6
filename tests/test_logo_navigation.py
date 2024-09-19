@@ -1,7 +1,7 @@
 import pytest
+import allure
 from page_objects.base_page import BasePage
 from config import BASE_URL, DZEN_URL
-import allure
 
 
 @pytest.mark.usefixtures("main_page")
@@ -11,9 +11,6 @@ class TestLogoNavigation:
     @allure.description("Тест проверяет переход на главную страницу «Самоката» при нажатии на логотип «Самоката».")
     def test_scooter_logo_navigation(self, main_page):
         base_page = BasePage(main_page)
-
-        with allure.step("Клик по кнопке заказа"):
-            base_page.click_top_order_button()
 
         with allure.step("Клик по логотипу Самоката"):
             base_page.click_scooter_logo()
@@ -36,7 +33,7 @@ class TestLogoNavigation:
         with allure.step("Переключение на новую вкладку"):
             base_page.switch_to_new_tab()
 
-        with allure.step("Ожидание загрузки страницы Дзена"):
+        with allure.step("Ожидание загрузки страницы в новой вкладке"):
             base_page.wait_for_url_to_be(DZEN_URL)
 
         with allure.step("Проверка URL главной страницы Дзена"):

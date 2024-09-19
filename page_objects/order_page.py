@@ -60,8 +60,5 @@ class OrderPageMethods(BasePage):
     def click_confirm_order_button(self):
         self.click_element(OrderPage.confirm_order_button)
 
-    def click_view_status_button(self):
-        self.click_element(OrderPage.view_status_button)
-
     def is_view_status_button_visible(self):
         return self.find_element(OrderPage.view_status_button).is_displayed()

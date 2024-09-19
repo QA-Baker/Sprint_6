@@ -29,10 +29,6 @@ class BasePage:
         element.clear()
         element.send_keys(text)
 
-    # Ожидание, пока элемент станет кликабельным
-    def wait_until_element_clickable(self, locator, timeout=3):
-        return WebDriverWait(self.driver, timeout).until(ec.element_to_be_clickable(locator))
-
     # Выполнение JavaScript
     def execute_script(self, script, *args):
         return self.driver.execute_script(script, *args)
@@ -47,13 +43,6 @@ class BasePage:
 
     def click_scooter_logo(self):
         self.click_element(BasePageLocators.scooter_logo)
-
-    # Клики по кнопкам "Заказать"
-    def click_top_order_button(self):
-        self.click_element(BasePageLocators.top_order_button)
-
-    def click_bottom_order_button(self):
-        self.click_element(BasePageLocators.bottom_order_button)
 
     # Ожидание открытия новой вкладки
     def wait_for_new_tab(self, timeout=5):
