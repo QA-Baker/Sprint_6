@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.firefox.options import Options
 from config import BASE_URL, ORDER_STATUS_URL, DZEN_URL
+from page_objects.base_page import BasePage
 from page_objects.order_page import OrderPageMethods
 
 
@@ -29,7 +30,7 @@ def create_driver():
 @pytest.fixture(scope="function")
 def main_page(create_driver):
     create_driver.get(BASE_URL)
-    return create_driver
+    return BasePage(create_driver)
 
 
 @pytest.fixture(scope="function")
