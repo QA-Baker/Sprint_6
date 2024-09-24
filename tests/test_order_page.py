@@ -1,6 +1,6 @@
 import pytest
 import allure
-from test_data import order_test_data
+from data import order_test_data
 
 
 @pytest.mark.usefixtures("main_page")
