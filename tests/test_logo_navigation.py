@@ -20,7 +20,7 @@ class TestLogoNavigation:
     @allure.description("Тест проверяет переход на главную страницу Дзена при нажатии на логотип Яндекса.")
     def test_yandex_logo_navigation(self, main_page):
         with allure.step("Клик по логотипу Яндекса"):
-            main_page.click_yandex_logo()  # Используем метод фикстуры main_page напрямую
+            main_page.click_yandex_logo()
 
         with allure.step("Ожидание открытия новой вкладки"):
             main_page.wait_for_new_tab()

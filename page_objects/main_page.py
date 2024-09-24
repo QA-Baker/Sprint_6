@@ -1,13 +1,7 @@
-from locators.base_page_locators import BasePageLocators
 from page_objects.base_page import BasePage
 
 
 class MainPage(BasePage):
-    def click_scooter_logo(self):
-        self.click_element(BasePageLocators.scooter_logo)
-
-    def click_yandex_logo(self):
-        self.click_element(BasePageLocators.yandex_logo)
 
     def click_faq_question(self, locator):
         self.click_element(locator)

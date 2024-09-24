@@ -3,7 +3,7 @@ import allure
 from data import order_test_data
 
 
-@pytest.mark.usefixtures("main_page")
+@pytest.mark.usefixtures("order_page")
 class TestOrderPage:
 
     @allure.title("Позитивный сценарий заказа самоката через разные точки входа")

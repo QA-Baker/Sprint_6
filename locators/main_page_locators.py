@@ -37,3 +37,8 @@ class MainPageLocators:
                          'Штрафа не будет, объяснительной записки тоже не попросим. Все же свои.")]']
     outside_mkad_info = [By.XPATH,
                          '//p[contains(text(), "Да, обязательно. Всем самокатов! И Москве, и Московской области.")]']
+
+    # Кнопка Заказать внизу страницы
+    bottom_order_button = (By.XPATH,
+                           "//button[contains(@class, 'Button_Button__ra12g Button_Middle__1CSJM')"
+                           " and text()='Заказать']")

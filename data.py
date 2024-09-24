@@ -23,7 +23,7 @@ order_test_data = [
         "color": "black",
         "comment": "Позвонить за час до доставки"
     }),
-    (BasePageLocators.bottom_order_button, {
+    (MainPageLocators.bottom_order_button, {
         "first_name": "Анна",
         "last_name": "Петрова",
         "address": "Москва, Тверская ул., д. 5",

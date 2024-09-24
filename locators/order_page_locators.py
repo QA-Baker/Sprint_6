@@ -35,7 +35,5 @@ class OrderPage:
         By.XPATH, '//button[text()="Посмотреть статус" and @class="Button_Button__ra12g Button_Middle__1CSJM"]')
 
     # Дополнительные локаторы
-    date_picker_container = (By.CSS_SELECTOR, ".react-datepicker__month-container")
-    rent_term_menu = (By.XPATH, '//div[@class="Dropdown-menu" and @aria-expanded="true"]')
     rent_term_option_template = ('//div[@class="Dropdown-option" and text()="{term}"]', By.XPATH)
     metro_option_template = ('//div[contains(@class, "select-search__select")]//*[text()="{metro_name}"]', By.XPATH)
